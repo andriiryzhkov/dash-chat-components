@@ -1,0 +1,26 @@
+.chat-message-received + .chat-message-outgoing,
+.chat-message-outgoing + .chat-message-received {
+  margin-top: 10px;
+}
+
+.chat-message-received + .chat-message-received .chat-message-avatar,
+.chat-message-outgoing + .chat-message-outgoing .chat-message-avatar {
+  visibility: collapse;
+}
+
+.chat-message-received:has(+ .chat-message-received) .chat-message-time,
+.chat-message-outgoing:has(+ .chat-message-outgoing) .chat-message-time {
+  display: none;
+}
+
+.avatar-received-none .chat-message-avatar-container-received {
+  display: none;
+}
+
+.avatar-outgoing-none .chat-message-avatar-container-outgoing {
+  display: none;
+}
+
+.timestamp-none .chat-message-time {
+  display: none;
+}

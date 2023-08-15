@@ -1,0 +1,2 @@
+recursive-include dash_chat_components/** *.js *.css *.json *.html
+prune tests

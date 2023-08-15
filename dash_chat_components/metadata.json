@@ -1,0 +1,438 @@
+{
+  "src/ts/components/Chat.tsx": {
+    "displayName": "Chat",
+    "description": "Main chat container",
+    "props": {
+      "children": {
+        "description": "Content of the chat",
+        "required": false,
+        "type": {
+          "name": "node",
+          "raw": "ReactNode"
+        }
+      },
+      "height": {
+        "description": "Height of the chat container",
+        "required": false,
+        "type": {
+          "name": "number",
+          "raw": "number"
+        }
+      },
+      "width": {
+        "description": "Width of the chat container",
+        "required": false,
+        "type": {
+          "name": "number",
+          "raw": "number"
+        }
+      },
+      "id": {
+        "description": "Unique ID to identify this component in Dash callbacks.",
+        "required": false,
+        "type": {
+          "name": "string",
+          "raw": "string"
+        }
+      },
+      "className": {
+        "description": "Often used with CSS to style elements with common properties.",
+        "required": false,
+        "type": {
+          "name": "string",
+          "raw": "string"
+        }
+      },
+      "style": {
+        "description": "Defines CSS styles which will override styles previously set.",
+        "required": false,
+        "type": {
+          "name": "any",
+          "raw": "any"
+        }
+      },
+      "setProps": {
+        "description": "Update props to trigger callbacks.",
+        "required": true,
+        "type": {
+          "name": "func",
+          "raw": "(props: Record<string, any>) => void"
+        }
+      }
+    },
+    "isContext": false
+  },
+  "src/ts/components/ChatInput.tsx": {
+    "displayName": "ChatInput",
+    "description": "Capture chat input from user",
+    "props": {
+      "autofocus": {
+        "description": "The element should be automatically focused after the page loaded.",
+        "required": false,
+        "type": {
+          "name": "bool",
+          "raw": "boolean"
+        }
+      },
+      "debounce": {
+        "description": "If True, changes to input will be sent back to the Dash server only\non enter or when losing focus. If it's False, it will sent the value\nback on every change.",
+        "required": false,
+        "defaultValue": {
+          "value": "false",
+          "computed": false
+        },
+        "type": {
+          "name": "bool",
+          "raw": "boolean"
+        }
+      },
+      "disabled": {
+        "description": "Indicates whether the user can interact with the element.",
+        "required": false,
+        "type": {
+          "name": "bool",
+          "raw": "boolean"
+        }
+      },
+      "maxlength": {
+        "description": "Defines the maximum number of characters allowed in the input element.",
+        "required": false,
+        "defaultValue": {
+          "value": "4000",
+          "computed": false
+        },
+        "type": {
+          "name": "number",
+          "raw": "number"
+        }
+      },
+      "n_submit": {
+        "description": "An integer that represents the number of times that the Enter key was\npressed while the input area had focus or submit button has been clicked on.",
+        "required": false,
+        "defaultValue": {
+          "value": "0",
+          "computed": false
+        },
+        "type": {
+          "name": "number",
+          "raw": "number"
+        }
+      },
+      "n_submit_timestamp": {
+        "description": "An integer that represents the time (in ms since 1970) at which n_submit\nchanged.",
+        "required": false,
+        "defaultValue": {
+          "value": "-1",
+          "computed": false
+        },
+        "type": {
+          "name": "number",
+          "raw": "number"
+        }
+      },
+      "placeholder": {
+        "description": "Provides a hint to the user of what can be entered in the field.",
+        "required": false,
+        "defaultValue": {
+          "value": "'Type a message...'",
+          "computed": false
+        },
+        "type": {
+          "name": "string",
+          "raw": "string"
+        }
+      },
+      "rows": {
+        "description": "Defines the number of rows in a text input area.",
+        "required": false,
+        "defaultValue": {
+          "value": "2",
+          "computed": false
+        },
+        "type": {
+          "name": "number",
+          "raw": "number"
+        }
+      },
+      "value": {
+        "description": "Input value for controlled component.",
+        "required": false,
+        "defaultValue": {
+          "value": "''",
+          "computed": false
+        },
+        "type": {
+          "name": "string",
+          "raw": "string"
+        }
+      },
+      "value_on_submit": {
+        "description": "Input value for controlled component after submit.",
+        "required": false,
+        "defaultValue": {
+          "value": "''",
+          "computed": false
+        },
+        "type": {
+          "name": "string",
+          "raw": "string"
+        }
+      },
+      "id": {
+        "description": "Unique ID to identify this component in Dash callbacks.",
+        "required": false,
+        "type": {
+          "name": "string",
+          "raw": "string"
+        }
+      },
+      "className": {
+        "description": "Often used with CSS to style elements with common properties.",
+        "required": false,
+        "type": {
+          "name": "string",
+          "raw": "string"
+        }
+      },
+      "style": {
+        "description": "Defines CSS styles which will override styles previously set.",
+        "required": false,
+        "type": {
+          "name": "any",
+          "raw": "any"
+        }
+      },
+      "setProps": {
+        "description": "Update props to trigger callbacks.",
+        "required": true,
+        "type": {
+          "name": "func",
+          "raw": "(props: Record<string, any>) => void"
+        }
+      },
+      "persistence": {
+        "description": "Used to allow user interactions in this component to be persisted when\nthe component - or the page - is refreshed. If `persisted` is truthy and\nhasn't changed from its previous value, a `value` that the user has\nchanged while using the app will keep that change, as long as\nthe new `value` also matches what was given originally.\nUsed in conjunction with `persistence_type`.",
+        "required": false,
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "string",
+              "raw": "string"
+            },
+            {
+              "name": "number",
+              "raw": "number"
+            }
+          ],
+          "raw": "string | number | boolean"
+        }
+      },
+      "persisted_props": {
+        "description": "Properties whose user interactions will persist after refreshing the\ncomponent or the page. Since only `value` is allowed this prop can\nnormally be ignored.",
+        "required": false,
+        "defaultValue": {
+          "value": "[\"value\"]",
+          "computed": false
+        },
+        "type": {
+          "name": "arrayOf",
+          "value": {
+            "name": "string",
+            "raw": "string"
+          },
+          "raw": "string[]"
+        }
+      },
+      "persistence_type": {
+        "description": "Where persisted user changes will be stored:\nmemory: only kept in memory, reset on page refresh.\nlocal: window.localStorage, data is kept after the browser quit.\nsession: window.sessionStorage, data is cleared once the browser quit.",
+        "required": false,
+        "defaultValue": {
+          "value": "'local'",
+          "computed": false
+        },
+        "type": {
+          "name": "enum",
+          "value": [
+            {
+              "value": "'local'",
+              "computed": false
+            },
+            {
+              "value": "'session'",
+              "computed": false
+            },
+            {
+              "value": "'memory'",
+              "computed": false
+            }
+          ],
+          "raw": "\"local\" | \"session\" | \"memory\""
+        }
+      }
+    },
+    "isContext": false
+  },
+  "src/ts/components/ChatMessage.tsx": {
+    "displayName": "ChatMessage",
+    "description": "Display single chat message",
+    "props": {
+      "avatar": {
+        "description": "Avatar",
+        "required": false,
+        "defaultValue": {
+          "value": "undefined",
+          "computed": false
+        },
+        "type": {
+          "name": "string",
+          "raw": "string"
+        }
+      },
+      "children": {
+        "description": "Content of the message",
+        "required": false,
+        "type": {
+          "name": "node",
+          "raw": "ReactNode"
+        }
+      },
+      "direction": {
+        "description": "Direction of the mssage: received or outgoing",
+        "required": true,
+        "type": {
+          "name": "string",
+          "raw": "string"
+        }
+      },
+      "timestamp": {
+        "description": "Time",
+        "required": false,
+        "defaultValue": {
+          "value": "-1",
+          "computed": false
+        },
+        "type": {
+          "name": "number",
+          "raw": "number"
+        }
+      },
+      "id": {
+        "description": "Unique ID to identify this component in Dash callbacks.",
+        "required": false,
+        "type": {
+          "name": "string",
+          "raw": "string"
+        }
+      },
+      "className": {
+        "description": "Often used with CSS to style elements with common properties.",
+        "required": false,
+        "type": {
+          "name": "string",
+          "raw": "string"
+        }
+      },
+      "style": {
+        "description": "Defines CSS styles which will override styles previously set.",
+        "required": false,
+        "type": {
+          "name": "any",
+          "raw": "any"
+        }
+      },
+      "setProps": {
+        "description": "Update props to trigger callbacks.",
+        "required": true,
+        "type": {
+          "name": "func",
+          "raw": "(props: Record<string, any>) => void"
+        }
+      }
+    },
+    "isContext": false
+  },
+  "src/ts/components/ChatMessageList.tsx": {
+    "displayName": "ChatMessageList",
+    "description": "Display list of chat messages",
+    "props": {
+      "children": {
+        "description": "ChatMessageList content",
+        "required": false,
+        "type": {
+          "name": "node",
+          "raw": "ReactNode"
+        }
+      },
+      "avatarReceived": {
+        "description": "Indicates whether the recieved message avatar should be displayed.",
+        "required": false,
+        "defaultValue": {
+          "value": "true",
+          "computed": false
+        },
+        "type": {
+          "name": "bool",
+          "raw": "boolean"
+        }
+      },
+      "avatarOutgoing": {
+        "description": "Indicates whether the outgoing message avatar should be displayed.",
+        "required": false,
+        "defaultValue": {
+          "value": "false",
+          "computed": false
+        },
+        "type": {
+          "name": "bool",
+          "raw": "boolean"
+        }
+      },
+      "timestamp": {
+        "description": "Indicates whether the message timestamp should be displayed.",
+        "required": false,
+        "defaultValue": {
+          "value": "true",
+          "computed": false
+        },
+        "type": {
+          "name": "bool",
+          "raw": "boolean"
+        }
+      },
+      "id": {
+        "description": "Unique ID to identify this component in Dash callbacks.",
+        "required": false,
+        "type": {
+          "name": "string",
+          "raw": "string"
+        }
+      },
+      "className": {
+        "description": "Often used with CSS to style elements with common properties.",
+        "required": false,
+        "type": {
+          "name": "string",
+          "raw": "string"
+        }
+      },
+      "style": {
+        "description": "Defines CSS styles which will override styles previously set.",
+        "required": false,
+        "type": {
+          "name": "any",
+          "raw": "any"
+        }
+      },
+      "setProps": {
+        "description": "Update props to trigger callbacks.",
+        "required": true,
+        "type": {
+          "name": "func",
+          "raw": "(props: Record<string, any>) => void"
+        }
+      }
+    },
+    "isContext": false
+  }
+}
