@@ -3,6 +3,14 @@
   "version": "0.0.1",
   "description": "Chat components for Plotly Dash",
   "main": "index.ts",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/andriiryzhkov/dash-chat-components.git"
+  },
+  "bugs": {
+    "url": "https://github.com/andriiryzhkov/dash-chat-components/issues"
+  },
+  "homepage": "https://github.com/andriiryzhkov/dash-chat-components",
   "scripts": {
     "build:js::dev": "webpack --mode development",
     "build:js": "webpack",
