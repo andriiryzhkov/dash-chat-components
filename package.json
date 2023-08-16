@@ -1,11 +1,11 @@
 {
   "name": "dash-chat-components",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Chat components for Plotly Dash",
   "main": "index.ts",
   "repository": {
     "type": "git",
-    "url": "git://github.com/andriiryzhkov/dash-chat-components.git"
+    "url": "https://github.com/andriiryzhkov/dash-chat-components.git"
   },
   "bugs": {
     "url": "https://github.com/andriiryzhkov/dash-chat-components/issues"
