@@ -121,6 +121,12 @@ def send_message(n_submit, n_submit_timestamp, value_on_submit, msg_list):
                 timestamp=n_submit_timestamp
             )
         )
+        msg_list.append(
+            dch.ChatMessageTyping(
+                avatar="bot.png",
+                direction="received",
+            )
+        )
     
         return msg_list, True, True
 
