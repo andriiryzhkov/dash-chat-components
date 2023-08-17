@@ -278,3 +278,20 @@ GitHub.sublime-settings
 # Julia manifest file names
 Manifest.toml
 JuliaManifest.toml
+
+# R build artifacts
+inst
+man
+R
+DESCRIPTION
+NAMESPACE
+
+# Julia build artifacts
+deps/
+src/*.jl
+src/jl
+Project.toml
+
+# dash-mantine-components artifacts
+dash_chat_components/*
+!dash_chat_components/__init__.py

@@ -434,5 +434,64 @@
       }
     },
     "isContext": false
+  },
+  "src/ts/components/ChatMessageTyping.tsx": {
+    "displayName": "ChatMessageTyping",
+    "description": "Display user typing message",
+    "props": {
+      "avatar": {
+        "description": "Avatar",
+        "required": false,
+        "defaultValue": {
+          "value": "undefined",
+          "computed": false
+        },
+        "type": {
+          "name": "string",
+          "raw": "string"
+        }
+      },
+      "direction": {
+        "description": "Direction of the mssage: received or outgoing",
+        "required": true,
+        "type": {
+          "name": "string",
+          "raw": "string"
+        }
+      },
+      "id": {
+        "description": "Unique ID to identify this component in Dash callbacks.",
+        "required": false,
+        "type": {
+          "name": "string",
+          "raw": "string"
+        }
+      },
+      "className": {
+        "description": "Often used with CSS to style elements with common properties.",
+        "required": false,
+        "type": {
+          "name": "string",
+          "raw": "string"
+        }
+      },
+      "style": {
+        "description": "Defines CSS styles which will override styles previously set.",
+        "required": false,
+        "type": {
+          "name": "any",
+          "raw": "any"
+        }
+      },
+      "setProps": {
+        "description": "Update props to trigger callbacks.",
+        "required": true,
+        "type": {
+          "name": "func",
+          "raw": "(props: Record<string, any>) => void"
+        }
+      }
+    },
+    "isContext": false
   }
 }
