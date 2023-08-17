@@ -48,22 +48,10 @@ messages = [
       "timestamp": int(math.floor(time.time() * 1000)),
     },
     {
-      "direction": "outgoing",
-      "avatar": "user.png",
-      "content": "Bootstraps color palette has continued to expand",
-      "timestamp": int(math.floor(time.time() * 1000)),
-    },
-    {
       "direction": "received",
       "avatar": "bot.png",
       "content":
         "Absolutely! In addition to the Colosseum and Vatican City, you should definitely explore the Roman Forum, which was the heart of ancient Rome's political and social life. The Pantheon is another architectural marvel you shouldn't miss. And don't forget to toss a coin into the Trevi Fountain for good luck! Piazza Navona, the Spanish Steps, and the Borghese Gallery are also worth visiting.",
-      "timestamp": int(math.floor(time.time() * 1000)),
-    },
-    {
-      "direction": "outgoing",
-      "avatar": "user.png",
-      "content": "Fourth message. Some random words.",
       "timestamp": int(math.floor(time.time() * 1000)),
     },
 ]
@@ -138,11 +126,12 @@ def send_message(n_submit, n_submit_timestamp, value_on_submit, msg_list):
     State("chat-input", "value_on_submit"),
     State("chat-msg-list", "children"), prevent_initial_call=True)
 def reply_message(children, value_on_submit, msg_list):
-    last_message = children[-1]["props"]
+    last_message = children[-2]["props"]
     if last_message["direction"] != "outgoing":
         raise PreventUpdate
     else:
         time.sleep(2)
+        msg_list.pop()
         msg_list.append(
             dch.ChatMessage(
                 f"You just typed: {value_on_submit}",
