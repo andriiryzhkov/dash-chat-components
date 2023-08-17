@@ -1,27 +1,31 @@
-// Format using reusable function
-function padTo2Digits(num: number) {
-  return num.toString().padStart(2, "0");
-}
+export function formatTimestamp(timestamp: number, locale: string = "en-GB"): string {
+  const dateTime = new Date(timestamp);
 
-// format as "YYYY-MM-DD hh:mm:ss"
-// You can tweak formatting easily
+  const dateOptions: Intl.DateTimeFormatOptions = {
+    year: 'numeric',
+    month: "numeric",
+    day: "numeric",
+  };
 
-export function formatTimestamp(timestamp: number): string {
-  const date = new Date(timestamp);
+  const dateTimeOptions: Intl.DateTimeFormatOptions = {
+    year: 'numeric',
+    month: "short",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+  };
 
-  const dateString =
-    date.getDate() === new Date().getDate()
-      ? [
-          padTo2Digits(date.getDate()),
-          padTo2Digits(date.getMonth() + 1),
-          date.getFullYear(),
-        ].join(".")
-      : "";
+  const timeOptions: Intl.DateTimeFormatOptions = {
+    hour: "numeric",
+    minute: "numeric",
+  };
 
-  const timeString = [
-    padTo2Digits(date.getHours()),
-    padTo2Digits(date.getMinutes()),
-  ].join(":");
+  const dateStr = new Intl.DateTimeFormat(locale, dateOptions).format(dateTime)
+  const currentDateStr = new Intl.DateTimeFormat(locale, dateOptions).format(new Date())
 
-  return dateString + " " + timeString;
+  if (dateStr === currentDateStr) {
+    return new Intl.DateTimeFormat(locale, timeOptions).format(dateTime)
+  } else {
+    return new Intl.DateTimeFormat(locale, dateTimeOptions).format(dateTime)
+  }
 }
