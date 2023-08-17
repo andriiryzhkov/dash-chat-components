@@ -1,7 +1,7 @@
 .typing {
-    height: 12px;
+    height: 16px;
     position: relative;
-    padding: 2px;
+    padding: 4px;
 }
 
 .typing__dot {
