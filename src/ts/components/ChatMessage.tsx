@@ -96,7 +96,16 @@ const ChatMessage = (props: Props) => {
       "flex-row": direction === "outgoing",
     }
   );
-  const messageCardClass = classNames("mb-1", "mw-75");
+  const messageCardClass = classNames(
+    "mb-1",
+    "mw-75",
+    "d-flex",
+    "flex-column",
+    {
+      "align-items-start": direction === "received",
+      "align-items-end": direction === "outgoing",
+    }
+  );
   const messageContentClass = classNames(
     "chat-message-content",
     "small",
