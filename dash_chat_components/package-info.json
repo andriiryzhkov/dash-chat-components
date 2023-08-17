@@ -38,5 +38,10 @@
     "classnames": "^2.3.2"
   },
   "author": "Andrii Ryzhkov <andrii.ryzhkov@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "files": [
+    "/dash_chat_components/*{.js,.map}",
+    "/dash_chat_components/metadata.json",
+    "LICENSE"
+  ]
 }
