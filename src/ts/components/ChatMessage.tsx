@@ -128,6 +128,7 @@ const ChatMessage = (props: Props) => {
     {
       "text-start": direction === "received",
       "text-end": direction === "outgoing",
+      "d-none": timestamp === -1,
     }
   );
   const messageAvatarContainerClass = classNames(

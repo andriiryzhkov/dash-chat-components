@@ -9,6 +9,7 @@ include("jl/chat.jl")
 include("jl/chatinput.jl")
 include("jl/chatmessage.jl")
 include("jl/chatmessagelist.jl")
+include("jl/chatmessagetyping.jl")
 
 function __init__()
     DashBase.register_package(
