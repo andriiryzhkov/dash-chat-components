@@ -85,7 +85,7 @@ app.layout = html.Div([
 ], style={
     'height': 'calc(100vh - 40px)',
     'margin': '20px auto',
-    'max-width': '900px'
+    'maxWidth': '900px'
 })
 
 
