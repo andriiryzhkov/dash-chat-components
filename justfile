@@ -40,6 +40,23 @@ clean:
     rm -rf dist
     rm -rf build
 
+# Remove generated code
+clean-gen:
+    rm -f Manifest.toml
+    rm -f JuliaManifest.toml
+    rm -rf inst
+    rm -rf man
+    rm -rf R
+    rm -f DESCRIPTION
+    rm -f NAMESPACE
+    rm -rf deps
+    rm -rf src/*.jl
+    rm -rf src/jl
+    rm -f Project.toml
+    find dash_chat_components -type f -not -name '__init__.py' -delete
+    rm -rf dash_chat_components/__pycache__
+    rm -rf dash_chat_components.egg-info
+
 # Format source code
 format:
     npx prettier --write src/ts/
