@@ -98,7 +98,7 @@ const ChatInput = (props: Props) => {
 
   useEffect(() => {
     if (value !== valueState) {
-      setValueState(value || undefined);
+      setValueState(value || "");
     }
   }, [value]);
 
@@ -124,19 +124,24 @@ const ChatInput = (props: Props) => {
       e.shiftKey === false
     ) {
       e.preventDefault();
-      const payload: Record<string, any> = {
-        n_submit: n_submit + 1,
-        n_submit_timestamp: Date.now(),
-        value_on_submit: inputRef.current.value,
-        value: undefined,
-      };
-      setValueState(undefined);
-      setProps(payload);
+      if (value.trim() !== "") {
+        const payload: Record<string, any> = {
+          n_submit: n_submit + 1,
+          n_submit_timestamp: Date.now(),
+          value_on_submit: inputRef.current.value,
+          value: "",
+        };
+        setValueState(undefined);
+        setProps(payload);
+      }
     }
   };
 
   const onClick = () => {
-    if (setProps) {
+    if (
+      setProps &&
+      value.trim() !== ""
+    ) {
       const payload: Record<string, any> = {
         n_submit: n_submit + 1,
         n_submit_timestamp: Date.now(),
@@ -167,7 +172,7 @@ const ChatInput = (props: Props) => {
       <button
         type="button"
         className={btnClass}
-        disabled={disabled}
+        disabled={disabled || value.trim() === ""}
         onClick={onClick}
       >
         <svg
@@ -193,8 +198,8 @@ ChatInput.defaultProps = {
   persistence_type: "local",
   placeholder: "Type a message...",
   rows: 2,
-  value_on_submit: undefined,
-  value: undefined,
+  value_on_submit: "",
+  value: "",
 };
 
 export default ChatInput;

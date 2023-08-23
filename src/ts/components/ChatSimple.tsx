@@ -49,7 +49,7 @@ type Props = {
   /**
    * Indicates whether the user can interact with the element.
    */
-  disabled: boolean;
+  disabled?: boolean;
   /**
    * Defines the maximum number of characters allowed in the input element.
    */
@@ -67,7 +67,7 @@ type Props = {
   /**
    * Provides a hint to the user of what can be entered in the field.
    */
-  placeholder: string;
+  placeholder?: string;
   /**
    * Defines the number of rows in a text input area.
    */
@@ -112,7 +112,7 @@ const ChatSimple = (props: Props) => {
   } = props;
 
   useEffect(() => {
-    if (value_on_submit !== undefined) {
+    if (value_on_submit !== "") {
       messages.push({
         avatar: avatarOutgoing,
         direction: "outgoing",
@@ -186,17 +186,13 @@ const ChatSimple = (props: Props) => {
 ChatSimple.defaultProps = {
   avatarReceived: "",
   debounce: false,
-  disabled: true,
-  maxlength: 4000,
   n_submit_timestamp: -1,
   n_submit: 0,
   persisted_props: ["value"],
   persistence_type: "local",
-  placeholder: "Type a message...",
-  rows: 2,
   timestampDisplay: true,
-  value_on_submit: undefined,
-  value: undefined,
+  value_on_submit: "",
+  value: "",
 };
 
 export default ChatSimple;
