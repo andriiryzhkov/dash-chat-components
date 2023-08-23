@@ -164,20 +164,20 @@ const ChatSimple = (props: Props) => {
       <ChatInput
         setProps={setProps}
         autofocus={autofocus}
+        className="mt-2 mx-2"
         debounce={debounce}
         disabled={disabled}
         maxlength={maxlength}
-        n_submit={n_submit}
         n_submit_timestamp={n_submit_timestamp}
-        value={value}
-        value_on_submit={value_on_submit}
-        placeholder={placeholder}
-        persistence={persistence}
+        n_submit={n_submit}
         persisted_props={persisted_props}
         persistence_type={persistence_type}
+        persistence={persistence}
+        placeholder={placeholder}
         rows={rows}
-        className="mt-2 mx-2"
         style={{ height: "65px" }}
+        value_on_submit={value_on_submit}
+        value={value}
       />
     </div>
   );
@@ -185,18 +185,18 @@ const ChatSimple = (props: Props) => {
 
 ChatSimple.defaultProps = {
   avatarReceived: "",
-  timestampDisplay: true,
-  value: undefined,
-  placeholder: "Type a message...",
   debounce: false,
   disabled: true,
   maxlength: 4000,
-  n_submit: 0,
   n_submit_timestamp: -1,
-  value_on_submit: undefined,
+  n_submit: 0,
   persisted_props: ["value"],
   persistence_type: "local",
+  placeholder: "Type a message...",
   rows: 2,
+  timestampDisplay: true,
+  value_on_submit: undefined,
+  value: undefined,
 };
 
 export default ChatSimple;
