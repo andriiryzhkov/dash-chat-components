@@ -43,10 +43,10 @@ const ChatMessageList = (props: Props) => {
     "position-relative",
     "overflow-auto",
     className, {
-      "avatar-received-none": !avatarReceived,
-      "avatar-outgoing-none": !avatarOutgoing,
-      "timestamp-none": !timestamp,
-    }
+    "avatar-received-none": !avatarReceived,
+    "avatar-outgoing-none": !avatarOutgoing,
+    "timestamp-none": !timestamp,
+  }
   );
 
   const scrollToLastMessage = () => {
