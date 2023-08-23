@@ -81,6 +81,7 @@ const ChatInput = (props: Props) => {
   const textareaClass = classNames("form-control");
   const btnClass = classNames(
     "btn",
+    "btn-lg",
     "btn-outline-primary",
     "border-0",
     "position-absolute",
@@ -177,8 +178,8 @@ const ChatInput = (props: Props) => {
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
+          width="18"
+          height="18"
           fill="currentColor"
           viewBox="0 0 16 16"
         >
