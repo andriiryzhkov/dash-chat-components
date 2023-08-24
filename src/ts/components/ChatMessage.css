@@ -1,3 +1,19 @@
+.chat-message-received .chat-message-content {
+  border-bottom-left-radius: 0 !important;
+}
+
+.chat-message-received + .chat-message-received .chat-message-content {
+  border-top-left-radius: 0 !important;
+}
+
+.chat-message-outgoing .chat-message-content {
+  border-bottom-right-radius: 0 !important;
+}
+
+.chat-message-outgoing + .chat-message-outgoing .chat-message-content {
+  border-top-right-radius: 0 !important;
+}
+
 .chat-message-received + .chat-message-outgoing,
 .chat-message-outgoing + .chat-message-received {
   margin-top: 10px;
