@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-n-publish:
-    name: Build and publish Plotly Dash package
+    name: Build and publish Plotly Dash packages
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -48,5 +48,5 @@ jobs:
     - name: Publish package 📦 to PyPI
       uses: pypa/gh-action-pypi-publish@release/v1
       with:
-        password: ${{ secrets.TEST_PYPI_API_TOKEN }}
-        repository_url: https://test.pypi.org/legacy/
+        password: ${{ secrets.PYPI_API_TOKEN }}
+  
