@@ -30,7 +30,12 @@ const ChatMessageTyping = (props: Props) => {
 
 
     return (
-        <ChatMessage setProps={setProps} avatar={avatar} direction={direction} className={className}>
+        <ChatMessage setProps={setProps}
+            avatar={avatar}
+            className={className}
+            direction={direction}
+            {...other}
+        >
             <div className="typing">
                 <div className="typing__dot"></div>
                 <div className="typing__dot"></div>

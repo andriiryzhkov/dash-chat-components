@@ -34,19 +34,19 @@ type Props = {
   /**
    * Provides a hint to the user of what can be entered in the field.
    */
-  placeholder: string;
+  placeholder?: string;
   /**
    * Defines the number of rows in a text input area.
    */
   rows?: number;
   /**
-   * Input value for controlled component.
-   */
-  value?: string;
-  /**
    * Input value for controlled component after submit.
    */
   value_on_submit: string;
+  /**
+   * Input value for controlled component.
+   */
+  value?: string;
 } & DashComponentProps &
   PersistenceProps;
 
@@ -58,19 +58,19 @@ const ChatInput = (props: Props) => {
     setProps,
     id,
     className,
-    value,
     autofocus,
     debounce,
     disabled,
     maxlength,
-    n_submit,
     n_submit_timestamp,
-    value_on_submit,
-    placeholder,
-    persistence,
+    n_submit,
     persisted_props,
     persistence_type,
+    persistence,
+    placeholder,
     rows,
+    value_on_submit,
+    value,
     ...other
   } = props;
 
@@ -80,7 +80,15 @@ const ChatInput = (props: Props) => {
   const inputClass = classNames("position-relative", className);
   const textareaClass = classNames("form-control");
   const btnClass = classNames(
-    "btn btn-outline-primary border-0 position-absolute bottom-0 end-0 m-1 rounded-4"
+    "btn",
+    "btn-lg",
+    "btn-outline-primary",
+    "border-0",
+    "position-absolute",
+    "bottom-0",
+    "end-0",
+    "m-1",
+    "rounded-4"
   );
 
   useEffect(() => {
@@ -91,7 +99,7 @@ const ChatInput = (props: Props) => {
 
   useEffect(() => {
     if (value !== valueState) {
-      setValueState(value || undefined);
+      setValueState(value || "");
     }
   }, [value]);
 
@@ -117,19 +125,24 @@ const ChatInput = (props: Props) => {
       e.shiftKey === false
     ) {
       e.preventDefault();
-      const payload: Record<string, any> = {
-        n_submit: n_submit + 1,
-        n_submit_timestamp: Date.now(),
-        value_on_submit: inputRef.current.value,
-        value: undefined,
-      };
-      setValueState(undefined);
-      setProps(payload);
+      if (value.trim() !== "") {
+        const payload: Record<string, any> = {
+          n_submit: n_submit + 1,
+          n_submit_timestamp: Date.now(),
+          value_on_submit: inputRef.current.value,
+          value: "",
+        };
+        setValueState(undefined);
+        setProps(payload);
+      }
     }
   };
 
   const onClick = () => {
-    if (setProps) {
+    if (
+      setProps &&
+      value.trim() !== ""
+    ) {
       const payload: Record<string, any> = {
         n_submit: n_submit + 1,
         n_submit_timestamp: Date.now(),
@@ -144,29 +157,29 @@ const ChatInput = (props: Props) => {
   return (
     <div id={id} className={inputClass} {...other}>
       <textarea
-        ref={inputRef}
-        className={textareaClass}
-        onChange={onChange}
-        onBlur={onBlur}
-        onKeyDown={onKeyDown}
         autoFocus={autofocus}
+        className={textareaClass}
         disabled={disabled}
         maxLength={maxlength}
-        rows={rows}
+        onBlur={onBlur}
+        onChange={onChange}
+        onKeyDown={onKeyDown}
         placeholder={placeholder}
+        ref={inputRef}
+        rows={rows}
         style={{ paddingRight: "50px" }}
         value={value}
       />
       <button
         type="button"
-        onClick={onClick}
-        disabled={disabled}
         className={btnClass}
+        disabled={disabled || value.trim() === ""}
+        onClick={onClick}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
+          width="18"
+          height="18"
           fill="currentColor"
           viewBox="0 0 16 16"
         >
@@ -178,18 +191,16 @@ const ChatInput = (props: Props) => {
 };
 
 ChatInput.defaultProps = {
-  value: "",
-  placeholder: "Type a message...",
   debounce: false,
   maxlength: 4000,
-  n_clicks: 0,
-  n_clicks_timestamp: -1,
-  n_submit: 0,
   n_submit_timestamp: -1,
-  value_on_submit: "",
+  n_submit: 0,
   persisted_props: ["value"],
   persistence_type: "local",
+  placeholder: "Type a message...",
   rows: 2,
+  value_on_submit: "",
+  value: "",
 };
 
 export default ChatInput;
