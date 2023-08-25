@@ -1,0 +1,48 @@
+name: Publish Plotly Dash package 📦
+
+on:
+  push:
+    tags:
+     - '*'
+
+jobs:
+  build-n-publish:
+    name: Build and publish Plotly Dash package
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup NodeJS 18
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18.x'
+        # registry-url: 'https://registry.npmjs.org'
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.10"
+    - name: Install NodeJS dependencies
+      run: npm ci && npm run build
+    - name: Install pypa/setuptools
+      run: >-
+        python -m
+        pip install wheel
+    - name: Extract tag name
+      id: tag
+      run: echo ::set-output name=TAG_NAME::$(echo $GITHUB_REF | cut -d / -f 3)
+    - name: Update version in package.json
+      run: >-
+        sed -i "s/{{VERSION_PLACEHOLDER}}/${{ steps.tag.outputs.TAG_NAME }}/g" package.json
+    - name: Build a webpack bundle
+      run: npm run build
+    - name: Build a binary wheel
+      run: >-
+        python setup.py sdist bdist_wheel
+    #  - name: Publish package 📦 to NPM 
+    #     run: npm publish
+    #     env:
+    #       NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+    - name: Publish package 📦 to PyPI
+      uses: pypa/gh-action-pypi-publish@master
+      with:
+        password: ${{ secrets.TEST_PYPI_API_TOKEN }}
+        repository-url: https://test.pypi.org/legacy/
