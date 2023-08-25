@@ -26,7 +26,7 @@ setup(
     install_requires=["dash>=2.5.1"],
     python_requires=">=3.7, <4",
     classifiers=[
-        "Development Status :: 1 - Planning",
+        "Development Status :: 4 - Beta",
         "Framework :: Dash",
         "Topic :: Communications :: Chat",
         "License :: OSI Approved :: MIT License",
