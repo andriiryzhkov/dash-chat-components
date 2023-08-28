@@ -295,3 +295,6 @@ Project.toml
 # dash-mantine-components artifacts
 dash_chat_components/*
 !dash_chat_components/__init__.py
+
+# ignore all backup files
+*.bak

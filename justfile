@@ -2,6 +2,7 @@ set dotenv-load := false
 
 # Generate components and build the bundle
 build:
+    sed -i .bak  's/{{{{VERSION_PLACEHOLDER}}/0.0.0/g' package.json
     npm run build
 
 # Build the webpack bundle
