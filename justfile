@@ -4,6 +4,8 @@ set dotenv-load := false
 build:
     sed -i .bak  's/{{{{VERSION_PLACEHOLDER}}/0.0.0/g' package.json
     npm run build
+    rm -f package.json
+    mv package.json.bak package.json
 
 # Build the webpack bundle
 build-js:
